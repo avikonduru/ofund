@@ -1,0 +1,13 @@
+<br>
+<div class="mx-auto" style="width: 800px;">
+    <div class="card border-success mb-3" style="width: 50rem;">
+      <div class="card-body text-success">
+        <h1 class="card-title"><%= @post.title %></h1>
+        <p class="card-text"><div><%= @post.body %></div></p>
+        <% if current_user.isAdmin == true %>
+            <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-success my-2 my-sm-0" %>
+            <%= link_to "Delete", post_path(@post), method: :delete, date: { confirm: "Are you sure?"}, class: "btn btn-success my-2 my-sm-0" %>
+        <% end %>
+      </div>
+    </div>
+</div>

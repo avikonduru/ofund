@@ -1,0 +1,29 @@
+<% if Time.now.wday == 0 %>
+
+    <%= form_for :user, url: edit_path(@user), action: :update, method: :post  do |f| %>
+        <br>
+        <div class="mx-auto" style="width: 400px;">
+            <div class="card border-success mb-5 text-center" style="width: 25rem;" >
+                  <div class="card-body text-success">
+                        <% if flash[:notice] %>
+                            <%= flash[:notice] %>
+                        <% end %>
+                        <br>
+                        <%= f.label :stock1, "Stock 1:" %>
+                        <%= f.text_field :stock1 , class: "form-control-lg" %>
+                        <br>
+                        <br>
+                        <%= f.label :stock2, "Stock 2:" %>
+                        <%= f.text_field :stock2 , class: "form-control-lg" %>
+                        <br>
+                        <br>
+                        <%= f.submit "Update Poll" , class: "btn btn-success my-2 my-sm-0" %>
+                  </div>
+            </div>
+        </div>
+        
+    <% end %>
+<% else %>
+    <br>
+    <h2>Polls are currently closed. They are only open on Sunday </h2>
+<% end %>

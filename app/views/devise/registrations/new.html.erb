@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    
+      <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+      
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    
+  </head>
+
+  <body>
+      
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <a class="navbar-brand" href= <%= root_path %>><font face="Questrial"><h1>hapis lobby</h1></font></a>
+        
+        <ul class="navbar-nav mr-auto">
+        </ul>
+      
+        <form class="form-inline my-2 my-lg-0">  
+            <%= link_to "Log In", new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0 ml-4" %>
+        </form>
+
+    </nav>
+      
+    <br>  
+    <div class="ml-4">
+    
+    <% if flash[:notice] %>
+        <%= flash[:notice] %>
+    <% end %>
+    
+    <h2>Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+        <div class="field">
+            <%= f.label :First_Name %><br />
+            <%= f.text_field :fname, autofocus: true, autocomplete: "first name" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :Last_Name %><br />
+            <%= f.text_field :lname, autofocus: true, autocomplete: "last name" %>
+        </div>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+    <br>
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+
+    <br>
+    <%= render "devise/shared/links" %>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      
+  </body>
+</html>

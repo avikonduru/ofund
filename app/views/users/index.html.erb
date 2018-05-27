@@ -1,0 +1,17 @@
+<% i = 1 %>
+<% @users.each do |user| %>
+    <% if StockQuote::Stock.quote(user.stock1) != nil && StockQuote::Stock.quote(user.stock2) != nil %>
+        <br>
+        <div class="mx-auto" style="width: 600px;">
+            <div class="card border-success mb-3" style="width: 40rem;" >
+              <div class="card-body text-success">
+                <h2 class="card-title"><%= i %>) Name: <%= user.fname %> <%= user.lname %></h2>
+                <h3 class="card-text"><div>Returns: <%= user.return %></div></h3>
+                <h3 class="card-text"><div>Stock 1: <%= StockQuote::Stock.quote(user.stock1).company_name %></div></h3>
+                <h3 class="card-text"><div>Stock 2: <%= StockQuote::Stock.quote(user.stock2).company_name %></div></h3>
+              </div>
+            </div>
+        </div>
+        <% i = i +1 %>
+    <% end %>
+<% end %>

@@ -1,0 +1,10 @@
+<% @posts.each do |post| %>
+    <br>
+    <div class="card border-success mb-3 ml-4" style="width: 30rem;" >
+      <div class="card-body text-success">
+        <h5 class="card-title"><%= post.title %></h5>
+        <p class="card-text"><div><%= truncate(post.body, :length => 90) %></div></p>
+        <%= link_to "Read Post", post , class: "btn btn-success my-2 my-sm-0"%>
+      </div>
+    </div>
+<% end %>
